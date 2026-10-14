@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Operaciones API')}"></head>
+<body class="app-body">
+<nav th:replace="~{fragments/layout :: navbar}"></nav>
+<main class="app-shell py-5">
+    <div class="page-header">
+        <div><p class="eyebrow">GESTIÓN DE RECURSOS</p><h1>Operaciones API</h1><p class="page-lede">Consulta y administra los recursos expuestos por el servicio.</p></div>
+        <span class="api-origin"><span class="status-dot"></span> Mismo servidor</span>
+    </div>
+    <section class="api-workspace" aria-label="Consola de operaciones API">
+        <div class="api-controls">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="api-resource" class="form-label">Recurso</label>
+                    <select id="api-resource" class="form-select"></select>
+                </div>
+                <div class="col-md-6">
+                    <label for="api-action" class="form-label">Operación</label>
+                    <select id="api-action" class="form-select"></select>
+                </div>
+                <div class="col-12 d-none" id="api-id-group">
+                    <label for="api-id" class="form-label" id="api-id-label">Identificador</label>
+                    <input id="api-id" class="form-control" type="number" min="1" placeholder="ID">
+                </div>
+                <div class="col-12 d-none" id="api-payload-group">
+                    <label for="api-payload" class="form-label">Cuerpo JSON</label>
+                    <textarea id="api-payload" class="form-control api-editor" rows="15" spellcheck="false" autocapitalize="off"></textarea>
+                    <div class="api-hint" id="api-payload-hint">Usa las propiedades del modelo indicado por la API.</div>
+                </div>
+                <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-3 pt-2">
+                    <code class="api-route" id="api-route">GET /api/clientes</code>
+                    <button id="api-submit" class="btn btn-accent px-4" type="button">Ejecutar</button>
+                </div>
+            </div>
+        </div>
+        <section class="api-response" aria-live="polite">
+            <div class="api-response-head"><div><p class="eyebrow">RESPUESTA</p><h2 id="api-response-title">Listo para consultar</h2></div><span id="api-status" class="api-status">Sin solicitud</span></div>
+            <pre id="api-output" class="api-output">Selecciona una operación y ejecútala para ver la respuesta del servidor.</pre>
+        </section>
+    </section>
+</main>
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<script th:replace="~{fragments/layout :: scripts}"></script>
+<script th:src="@{/js/api-console.js}"></script>
+</body>
+</html>
